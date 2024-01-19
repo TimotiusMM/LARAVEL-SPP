@@ -19,14 +19,14 @@ use App\Http\Controllers\Spp;
 |
 */
 
-Route::get('/pembayaran', [Spp::class, 'index']);
-Route::post('/pembayaran/save', [Spp::class, 'save']);
+Route::get('/tpembayaran', [Spp::class, 'index']);
+Route::post('/tpembayaran/save', [Spp::class, 'save']);
 Route::get('/login', [Login::class, 'index'])->name('login');
 Route::post('/login/proses', [Login::class, 'proses']);
 Route::get('/logout', [Login::class, 'logout']);
-Route::delete('/pembayaran/delete/{id}', [Spp::class, 'delete'])->name('pembayaran.delete');
-Route::get('/pembayaran/edit/{id}', [Spp::class, 'edit'])->name('pembayaran.edit');
-Route::put('/pembayaran/delete/{id}', [Spp::class, 'update'])->name('pembayaran.update');
+Route::delete('/tpembayaran/delete/{id}', [Spp::class, 'delete'])->name('tpembayaran.delete');
+Route::get('/tpembayaran/edit/{id}', [Spp::class, 'edit'])->name('tpembayaran.edit');
+Route::put('/tpembayaran/delete/{id}', [Spp::class, 'update'])->name('tpembayaran.update');
 Route::get('/siswa', [Siswa::class, 'index']);
 Route::get('excel-export', [Spp::class, 'exportExcel']);
 Route::group(['middleware' => ['auth']], function () {

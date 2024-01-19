@@ -21,11 +21,16 @@
                     <table class="table table-xm  table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama SIswa</th>
+                                <th>ID Pembayaran</th>
+                                <th>ID Petugas</th>
+                                <th>NISN</th>
                                 <th>Tanggal Pembayaran</th>
-                                <th>Jumlah</th>
+                                <th>Bulan Dibayar</th>
+                                <th>Tahun Dibayar</th>
+                                <th>ID SPP</th>
+                                <th>Jumlah Bayar</th>
                                 <th>Aksi</th>
+
                         </thead>
                         <tbody>
                             @php
@@ -33,16 +38,21 @@
                             @endphp
                             @foreach ($pembayaran as $row)
                                 <tr>
-                                    <td width="5%">{{ $no++ }}</td>
-                                    <td>{{ $row->nama }}</td>
+                                    <td>{{ $row->id_pembayaran }}</td>
+                                    <td>{{ $row->id_petugas }}</td>
+                                    <td>{{ $row->nisn }}</td>
                                     <td>{{ $row->tgl_bayar }}</td>
-                                    <td>Rp.{{ $row->jumlah }}</td>
+                                    <td>{{ $row->bulan_dibayar }}</td>
+                                    <td>{{ $row->tahun_dibayar }}</td>
+                                    <td>{{ $row->id_spp }}</td>
+                                    <td>Rp.{{ $row->jumlah_bayar }}</td>
+
                                     <td>
                                         <a href="#" class="btn btn-sm btn-warning" data-toggle="modal"
                                             data-target="#editModal{{ $row->id }}">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
-                                        <form action="{{ route('pembayaran.delete', $row->id) }}" method="POST"
+                                        <form action="{{ route('tpembayaran.delete', $row->id_pembayaran) }}" method="POST"
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -96,7 +106,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('pembayaran.update', $row->id) }}" method="POST">
+                                                <form action="{{ route('tpembayaran.update', $row->id_pembayaran) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-group">
@@ -181,7 +191,7 @@
 
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('pembayaran/save') }}" method="POST">
+                    <form action="{{ url('tpembayaran/save') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="nama">Nama Siswa</label>
